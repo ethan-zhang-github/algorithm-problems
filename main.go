@@ -1,10 +1,14 @@
 package main
 
 import (
-	"algorithm-problems/linked_list"
+	List "algorithm-problems/linked_list"
 	"fmt"
 )
 
 func main() {
-	fmt.Println(linked_list.Cons(1, 2, 3))
+	list := List.Cons(1, 4, 3, 2, 5, 2)
+
+	res := List.Partition(list, 3)
+
+	fmt.Println(res)
 }

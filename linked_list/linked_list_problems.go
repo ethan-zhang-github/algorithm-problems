@@ -108,17 +108,11 @@ func mergeKLists(lists []*ListNode, l int, r int) *ListNode {
 }
 
 func Partition(head *ListNode, x int) *ListNode {
-	p, i := head, x
-	for i > 0 && p != nil && p.Next != nil {
-		p = p.Next
-	}
-	xv := p.Val
 	ll := &ListNode{Val: -1}
 	rl := &ListNode{Val: -1}
-	p = head
-	lp, rp := ll, rl
+	p, lp, rp := head, ll, rl
 	for p != nil {
-		if p.Val < xv {
+		if p.Val < x {
 			lp.Next = p
 			lp = lp.Next
 		} else {
@@ -127,6 +121,7 @@ func Partition(head *ListNode, x int) *ListNode {
 		}
 		p = p.Next
 	}
+	rp.Next = nil
 	lp.Next = rl.Next
 	return ll.Next
 }
