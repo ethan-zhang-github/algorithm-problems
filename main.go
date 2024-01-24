@@ -6,9 +6,8 @@ import (
 )
 
 func main() {
-	list := List.Cons(1, 4, 3, 2, 5, 2)
+	list := List.Cons(1, 4, 3, 2, 5, 2, 7)
 
-	res := List.Partition(list, 3)
+	fmt.Println(List.MiddleNode(list))
 
-	fmt.Println(res)
 }
