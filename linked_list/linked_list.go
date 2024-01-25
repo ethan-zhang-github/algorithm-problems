@@ -83,3 +83,17 @@ func (l *ListNode) Concat(other *ListNode) *ListNode {
 	tail.Next = other
 	return l
 }
+
+func (l *ListNode) FindFromEnd(k int) *ListNode {
+	dummy := &ListNode{Val: -1, Next: l}
+	p, q, k := dummy, dummy, k
+	for k > 0 {
+		p = p.Next
+		k--
+	}
+	for p != nil {
+		p = p.Next
+		q = q.Next
+	}
+	return q
+}

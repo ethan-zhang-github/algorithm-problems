@@ -134,3 +134,58 @@ func MiddleNode(head *ListNode) *ListNode {
 	}
 	return slow
 }
+
+func ReverseList(head *ListNode) *ListNode {
+	pre := (*ListNode)(nil)
+	p := head
+	for p != nil {
+		succ := p.Next
+		p.Next = pre
+		pre = p
+		p = succ
+	}
+	return pre
+}
+
+func ReverseListRecursive(head *ListNode) *ListNode {
+	if head == nil || head.Next == nil {
+		return head
+	}
+	rev := ReverseListRecursive(head.Next)
+	head.Next.Next = head
+	head.Next = nil
+	return rev
+}
+
+func ReverseBetween(head *ListNode, left int, right int) *ListNode {
+	dummy := &ListNode{Val: -1, Next: head}
+	p := dummy
+	for i := 0; i < left-1; i++ {
+		p = p.Next
+	}
+	pre := (*ListNode)(nil)
+	cur := p.Next
+	for i := left; i <= right; i++ {
+		post := cur.Next
+		cur.Next = pre
+		pre = cur
+		cur = post
+	}
+	q := p.Next
+	p.Next = pre
+	q.Next = cur
+	return dummy.Next
+}
+
+func ReverseN(head *ListNode, n int) *ListNode {
+	pre := (*ListNode)(nil)
+	cur := head
+	for i := 0; i < n; i++ {
+		post := cur.Next
+		cur.Next = pre
+		pre = cur
+		cur = post
+	}
+	head.Next = cur
+	return pre
+}
