@@ -189,3 +189,24 @@ func ReverseN(head *ListNode, n int) *ListNode {
 	head.Next = cur
 	return pre
 }
+
+func ReverseKGroup(head *ListNode, k int) *ListNode {
+	dummy := &ListNode{Val: -1, Next: head}
+	cur := dummy
+	for i := 0; i < k; i++ {
+		if cur.Next == nil {
+			return dummy.Next
+		}
+		cur = cur.Next
+	}
+	pre := (*ListNode)(nil)
+	cur = head
+	for i := 0; i < k; i++ {
+		post := cur.Next
+		cur.Next = pre
+		pre = cur
+		cur = post
+	}
+	head.Next = ReverseKGroup(cur, k)
+	return pre
+}
