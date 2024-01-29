@@ -209,3 +209,33 @@ func ReverseKGroup(head *ListNode, k int) *ListNode {
 	head.Next = ReverseKGroup(cur, k)
 	return pre
 }
+
+func IsPalindrome(head *ListNode) bool {
+	dummy := &ListNode{Val: -1, Next: head}
+	slow, fast := dummy, dummy
+	for fast.Next != nil && fast.Next.Next != nil {
+		slow = slow.Next
+		fast = fast.Next.Next
+	}
+	var pre *ListNode
+	cur := head
+	mid := slow.Next
+	for cur != mid {
+		post := cur.Next
+		cur.Next = pre
+		pre = cur
+		cur = post
+	}
+	p, q := pre, mid
+	if fast.Next != nil {
+		q = q.Next
+	}
+	for p != nil && q != nil {
+		if p.Val != q.Val {
+			return false
+		}
+		p = p.Next
+		q = q.Next
+	}
+	return true
+}
