@@ -1,6 +1,6 @@
 package array
 
-// https://leetcode.cn/problems/two-sum-ii-input-array-is-sorted/
+// TwoSum https://leetcode.cn/problems/two-sum-ii-input-array-is-sorted/
 func TwoSum(numbers []int, target int) []int {
 	i, j := 0, len(numbers)-1
 	for i < j {
@@ -13,5 +13,5 @@ func TwoSum(numbers []int, target int) []int {
 			i++
 		}
 	}
-	return []int{}
+	return []int{-1, -1}
 }
