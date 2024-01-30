@@ -1,11 +1,11 @@
 package main
 
 import (
-	List "algorithm-problems/linked_list"
+	Array "algorithm-problems/array"
 	"fmt"
 )
 
 func main() {
-	list2 := List.Cons(1, 2)
-	fmt.Println(List.IsPalindrome(list2))
+	a := []int{2, 7, 11, 15}
+	fmt.Println(Array.TwoSum(a, 9))
 }
