@@ -6,6 +6,7 @@ import (
 )
 
 func main() {
-	a := []int{2, 7, 11, 15}
-	fmt.Println(Array.TwoSum(a, 9))
+	a := []int{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}
+	fmt.Println(Array.RemoveDuplicates(a))
+	fmt.Println(a)
 }

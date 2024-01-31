@@ -15,3 +15,18 @@ func TwoSum(numbers []int, target int) []int {
 	}
 	return []int{-1, -1}
 }
+
+// RemoveDuplicates https://leetcode.cn/problems/remove-duplicates-from-sorted-array/
+func RemoveDuplicates(nums []int) int {
+	i, j := 0, 0
+	for j < len(nums) {
+		if nums[i] == nums[j] {
+			j++
+		} else {
+			i++
+			nums[i] = nums[j]
+			j++
+		}
+	}
+	return i + 1
+}
