@@ -30,3 +30,16 @@ func RemoveDuplicates(nums []int) int {
 	}
 	return i + 1
 }
+
+// RemoveElement https://leetcode.cn/problems/remove-element/
+func RemoveElement(nums []int, val int) int {
+	i, j := 0, 0
+	for j < len(nums) {
+		if nums[j] != val {
+			nums[i] = nums[j]
+			i++
+		}
+		j++
+	}
+	return i
+}

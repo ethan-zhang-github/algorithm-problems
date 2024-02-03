@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	a := []int{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}
-	fmt.Println(Array.RemoveDuplicates(a))
+	a := []int{2, 2, 3}
+	fmt.Println(Array.RemoveElement(a, 2))
 	fmt.Println(a)
 }
