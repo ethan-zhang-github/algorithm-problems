@@ -62,12 +62,31 @@ func MoveZeroes(nums []int) {
 
 // ReverseString https://leetcode.cn/problems/reverse-string/
 func ReverseString(s []byte) {
-	i, j := 0, len(s)-1
-	for i < j {
-		temp := s[j]
-		s[j] = s[i]
-		s[i] = temp
-		i++
-		j--
+	for i, j := 0, len(s)-1; i < j; i, j = i+1, j-1 {
+		s[i], s[j] = s[j], s[i]
 	}
+}
+
+// LongestPalindrome https://leetcode.cn/problems/longest-palindromic-substring/
+func LongestPalindrome(s string) string {
+	maxL, maxR, maxLen := 0, 1, 1
+	for i := 0; i < len(s); i++ {
+		l, r := palindrome(s, i, i)
+		if r-l > maxLen {
+			maxL, maxR, maxLen = l, r, r-l
+		}
+		l, r = palindrome(s, i, i+1)
+		if r-l > maxLen {
+			maxL, maxR, maxLen = l, r, r-l
+		}
+	}
+	return s[maxL:maxR]
+}
+
+func palindrome(s string, l int, r int) (int, int) {
+	for l >= 0 && r < len(s) && s[l] == s[r] {
+		l--
+		r++
+	}
+	return l + 1, r
 }
