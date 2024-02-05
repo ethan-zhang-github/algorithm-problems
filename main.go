@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	a := []int{2, 2, 3}
-	fmt.Println(Array.RemoveElement(a, 2))
+	a := []int{0, 1, 0, 3, 12}
+	Array.MoveZeroes(a)
 	fmt.Println(a)
 }
