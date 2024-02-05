@@ -59,3 +59,15 @@ func MoveZeroes(nums []int) {
 		slow++
 	}
 }
+
+// ReverseString https://leetcode.cn/problems/reverse-string/
+func ReverseString(s []byte) {
+	i, j := 0, len(s)-1
+	for i < j {
+		temp := s[j]
+		s[j] = s[i]
+		s[i] = temp
+		i++
+		j--
+	}
+}
