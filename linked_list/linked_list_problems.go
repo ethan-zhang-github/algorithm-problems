@@ -136,13 +136,13 @@ func MiddleNode(head *ListNode) *ListNode {
 }
 
 func ReverseList(head *ListNode) *ListNode {
-	pre := (*ListNode)(nil)
-	p := head
-	for p != nil {
-		succ := p.Next
-		p.Next = pre
-		pre = p
-		p = succ
+	var pre *ListNode
+	cur := head
+	for cur != nil {
+		post := cur.Next
+		cur.Next = pre
+		pre = cur
+		cur = post
 	}
 	return pre
 }
@@ -238,4 +238,20 @@ func IsPalindrome(head *ListNode) bool {
 		q = q.Next
 	}
 	return true
+}
+
+// DeleteDuplicates https://leetcode.cn/problems/remove-duplicates-from-sorted-list/
+func DeleteDuplicates(head *ListNode) *ListNode {
+	slow, fast := head, head
+	for fast != nil {
+		if slow.Val != fast.Val {
+			slow.Next = fast
+			slow = slow.Next
+		}
+		fast = fast.Next
+	}
+	if slow != nil {
+		slow.Next = nil
+	}
+	return head
 }
