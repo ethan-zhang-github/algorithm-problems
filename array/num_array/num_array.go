@@ -1,4 +1,4 @@
-package array
+package num_array
 
 // NumArray https://leetcode.cn/problems/range-sum-query-immutable/description/
 type NumArray struct {
