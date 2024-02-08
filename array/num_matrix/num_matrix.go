@@ -1,5 +1,6 @@
 package num_matrix
 
+// NumMatrix https://leetcode.cn/problems/range-sum-query-2d-immutable/description/
 type NumMatrix struct {
 	sumMatrix [][]int
 }
