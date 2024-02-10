@@ -1,5 +1,7 @@
 package array
 
+import "algorithm-problems/array/num_array"
+
 // TwoSum https://leetcode.cn/problems/two-sum-ii-input-array-is-sorted/
 func TwoSum(numbers []int, target int) []int {
 	i, j := 0, len(numbers)-1
@@ -89,4 +91,20 @@ func palindrome(s string, l int, r int) (int, int) {
 		r++
 	}
 	return l + 1, r
+}
+
+// CarPooling https://leetcode.cn/problems/car-pooling/
+func CarPooling(trips [][]int, capacity int) bool {
+	nums := make([]int, 1001)
+	diff := num_array.NewDifference(nums)
+	for _, trip := range trips {
+		diff.Increment(trip[1], trip[2]-1, trip[0])
+	}
+	res := diff.Result()
+	for _, val := range res {
+		if val > capacity {
+			return false
+		}
+	}
+	return true
 }
