@@ -10,3 +10,9 @@ func TestCarPooling(t *testing.T) {
 	res := CarPooling(trips, 3)
 	fmt.Println(res)
 }
+
+func TestCorpFlightBookings(t *testing.T) {
+	bookings := [][]int{{1, 2, 10}, {2, 3, 20}, {2, 5, 25}}
+	res := CorpFlightBookings(bookings, 5)
+	fmt.Println(res)
+}

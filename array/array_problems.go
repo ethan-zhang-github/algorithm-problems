@@ -108,3 +108,12 @@ func CarPooling(trips [][]int, capacity int) bool {
 	}
 	return true
 }
+
+// CorpFlightBookings https://leetcode.cn/problems/corporate-flight-bookings/
+func CorpFlightBookings(bookings [][]int, n int) []int {
+	diff := num_array.NewDifference(make([]int, n))
+	for _, booking := range bookings {
+		diff.Increment(booking[0]-1, booking[1]-1, booking[2])
+	}
+	return diff.Result()
+}
