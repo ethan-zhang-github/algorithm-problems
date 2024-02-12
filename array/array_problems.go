@@ -1,6 +1,8 @@
 package array
 
-import "algorithm-problems/array/num_array"
+import (
+	"algorithm-problems/array/num_array"
+)
 
 // TwoSum https://leetcode.cn/problems/two-sum-ii-input-array-is-sorted/
 func TwoSum(numbers []int, target int) []int {
@@ -116,4 +118,9 @@ func CorpFlightBookings(bookings [][]int, n int) []int {
 		diff.Increment(booking[0]-1, booking[1]-1, booking[2])
 	}
 	return diff.Result()
+}
+
+// ReverseWords https://leetcode.cn/problems/reverse-words-in-a-string/
+func ReverseWords(s string) string {
+	return ""
 }
