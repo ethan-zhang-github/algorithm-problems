@@ -25,3 +25,8 @@ func TestSpiralArray(t *testing.T) {
 	}
 	fmt.Println(SpiralArray(matrix))
 }
+
+func TestGenerateMatrix(t *testing.T) {
+	fmt.Println(GenerateMatrix(3))
+
+}

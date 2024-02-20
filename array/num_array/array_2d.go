@@ -1,5 +1,6 @@
 package num_array
 
+// Rotate https://leetcode.cn/problems/rotate-image/description/
 func Rotate(matrix [][]int) {
 	for i := 0; i < len(matrix)-1; i++ {
 		for j := i + 1; j < len(matrix); j++ {
@@ -58,4 +59,35 @@ func SpiralArray(array [][]int) []int {
 		right--
 	}
 	return res
+}
+
+// GenerateMatrix https://leetcode.cn/problems/spiral-matrix-ii/
+func GenerateMatrix(n int) [][]int {
+	matrix := make([][]int, n)
+	for i := 0; i < n; i++ {
+		matrix[i] = make([]int, n)
+	}
+	x, y, p := -1, -1, 1
+	for n > 0 {
+		x++
+		y++
+		for j := y; j < y+n; j++ {
+			matrix[x][j] = p
+			p++
+		}
+		for i := x + 1; i < x+n; i++ {
+			matrix[i][y+n-1] = p
+			p++
+		}
+		for j := y + n - 2; j >= y; j-- {
+			matrix[x+n-1][j] = p
+			p++
+		}
+		for i := x + n - 2; i > x; i-- {
+			matrix[i][y] = p
+			p++
+		}
+		n -= 2
+	}
+	return matrix
 }
