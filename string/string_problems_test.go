@@ -10,3 +10,7 @@ func TestReverseMessage(t *testing.T) {
 	res := ReverseMessage(s)
 	fmt.Println(res)
 }
+
+func TestLengthOfLongestSubstring(t *testing.T) {
+	fmt.Println(LengthOfLongestSubstring("abcabcbb"))
+}
