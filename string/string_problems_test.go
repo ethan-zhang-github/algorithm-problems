@@ -14,3 +14,8 @@ func TestReverseMessage(t *testing.T) {
 func TestLengthOfLongestSubstring(t *testing.T) {
 	fmt.Println(LengthOfLongestSubstring("abcabcbb"))
 }
+
+func TestFindAnagrams(t *testing.T) {
+	fmt.Println(FindAnagrams("cbaebabacd", "abc"))
+	fmt.Println(FindAnagrams("abab", "ab"))
+}
