@@ -82,3 +82,32 @@ func equals(map1 map[rune]int, map2 map[rune]int) bool {
 	}
 	return true
 }
+
+// CheckInclusion https://leetcode.cn/problems/permutation-in-string/
+func CheckInclusion(s1 string, s2 string) bool {
+	cache := make(map[byte]int, len(s1))
+	for i := 0; i < len(s1); i++ {
+		cache[s1[i]]++
+	}
+	l, r, valid := 0, 0, 0
+	win := make(map[byte]int, len(s1))
+	for r < len(s2) {
+		c := s2[r]
+		win[c]++
+		r++
+		if win[c] == cache[c] {
+			valid++
+		}
+		if r-l > len(s1) {
+			if win[s2[l]] == cache[s2[l]] {
+				valid--
+			}
+			win[s2[l]]--
+			l++
+		}
+		if valid == len(cache) {
+			return true
+		}
+	}
+	return false
+}

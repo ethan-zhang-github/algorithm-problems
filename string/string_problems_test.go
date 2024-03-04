@@ -19,3 +19,7 @@ func TestFindAnagrams(t *testing.T) {
 	fmt.Println(FindAnagrams("cbaebabacd", "abc"))
 	fmt.Println(FindAnagrams("abab", "ab"))
 }
+
+func TestCheckInclusion(t *testing.T) {
+	fmt.Println(CheckInclusion("abcdxabcde", "abcdeabcdx"))
+}
