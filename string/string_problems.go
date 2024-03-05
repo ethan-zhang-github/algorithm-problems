@@ -111,3 +111,41 @@ func CheckInclusion(s1 string, s2 string) bool {
 	}
 	return false
 }
+
+// MinWindow https://leetcode.cn/problems/minimum-window-substring/
+func MinWindow(s string, t string) string {
+	if len(t) > len(s) {
+		return ""
+	}
+	need := make(map[byte]int, len(t))
+	for i := 0; i < len(t); i++ {
+		need[t[i]]++
+	}
+	ml, mr := 0, 0
+	l, r, valid := 0, 0, 0
+	win := make(map[byte]int, len(t))
+	for r < len(s) {
+		win[s[r]]++
+		if win[s[r]] == need[s[r]] {
+			valid++
+		}
+		r++
+		if valid == len(need) {
+			for l < r {
+				if n, ok := need[s[l]]; !ok || n < win[s[l]] {
+					win[s[l]]--
+					l++
+				} else {
+					break
+				}
+			}
+			if mr == 0 || r-l < mr-ml {
+				ml, mr = l, r
+			}
+		}
+	}
+	if valid != len(need) {
+		return ""
+	}
+	return s[ml:mr]
+}

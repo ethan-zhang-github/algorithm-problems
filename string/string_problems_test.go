@@ -23,3 +23,7 @@ func TestFindAnagrams(t *testing.T) {
 func TestCheckInclusion(t *testing.T) {
 	fmt.Println(CheckInclusion("abcdxabcde", "abcdeabcdx"))
 }
+
+func TestMinWindow(t *testing.T) {
+	fmt.Println(MinWindow("ab", "a"))
+}
