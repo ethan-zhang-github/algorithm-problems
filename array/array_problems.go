@@ -120,7 +120,42 @@ func CorpFlightBookings(bookings [][]int, n int) []int {
 	return diff.Result()
 }
 
-// ReverseWords https://leetcode.cn/problems/reverse-words-in-a-string/
-func ReverseWords(s string) string {
-	return ""
+// SearchRange https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/
+func SearchRange(nums []int, target int) []int {
+	left := searchLeft(nums, 0, len(nums), target)
+	if left == -1 {
+		return []int{-1, -1}
+	}
+	right := searchRight(nums, left-1, len(nums)-1, target)
+	return []int{left, right}
+}
+
+func searchLeft(nums []int, left int, right int, target int) int {
+	if left >= right {
+		if left < len(nums) && target == nums[left] {
+			return left
+		}
+		return -1
+	}
+	mid := left + (right-left)/2
+	if target <= nums[mid] {
+		return searchLeft(nums, left, mid, target)
+	} else {
+		return searchLeft(nums, mid+1, right, target)
+	}
+}
+
+func searchRight(nums []int, left int, right int, target int) int {
+	if left >= right {
+		if right >= 0 && target == nums[right] {
+			return right
+		}
+		return -1
+	}
+	mid := right - (right-left)/2
+	if target >= nums[mid] {
+		return searchRight(nums, mid, right, target)
+	} else {
+		return searchRight(nums, left, mid-1, target)
+	}
 }

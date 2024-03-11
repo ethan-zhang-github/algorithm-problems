@@ -25,3 +25,9 @@ func TestReverseWords(t *testing.T) {
 		fmt.Println(unicode.IsSpace(c))
 	}
 }
+
+func TestSearchRange(t *testing.T) {
+	//fmt.Println(SearchRange([]int{5, 7, 7, 8, 8, 10}, 8))
+	//fmt.Println(SearchRange([]int{5, 7, 7, 8, 8, 10}, 6))
+	fmt.Println(SearchRange([]int{2, 2}, 3))
+}
