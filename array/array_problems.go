@@ -159,3 +159,22 @@ func searchRight(nums []int, left int, right int, target int) int {
 		return searchRight(nums, left, mid-1, target)
 	}
 }
+
+// Search https://leetcode.cn/problems/binary-search/
+func Search(nums []int, target int) int {
+	return searchRecursive(nums, target, 0, len(nums)-1)
+}
+
+func searchRecursive(nums []int, target int, left int, right int) int {
+	if left > right {
+		return -1
+	}
+	mid := left + (right-left)/2
+	if nums[mid] == target {
+		return mid
+	} else if target > nums[mid] {
+		return searchRecursive(nums, target, mid+1, right)
+	} else {
+		return searchRecursive(nums, target, left, mid-1)
+	}
+}
