@@ -20,3 +20,21 @@ func preorderTraversalRecursive(root *TreeNode, values []int) []int {
 	values = preorderTraversalRecursive(root.Right, values)
 	return values
 }
+
+// https://leetcode.cn/problems/diameter-of-binary-tree/
+func diameterOfBinaryTree(root *TreeNode) int {
+	maxDiameter := 0
+	traverse(root, func(node *TreeNode) {
+		maxDiameter = max(maxDiameter, maxDepth(node.Left)+maxDepth(node.Right))
+	})
+	return maxDiameter
+}
+
+func traverse(root *TreeNode, f func(node *TreeNode)) {
+	if root == nil {
+		return
+	}
+	f(root)
+	traverse(root.Left, f)
+	traverse(root.Right, f)
+}
