@@ -38,3 +38,24 @@ func traverse(root *TreeNode, f func(node *TreeNode)) {
 	traverse(root.Left, f)
 	traverse(root.Right, f)
 }
+
+// https://leetcode.cn/problems/flatten-binary-tree-to-linked-list/
+func flatten(root *TreeNode) {
+	if root == nil {
+		return
+	}
+	if root.Left == nil {
+		flatten(root.Right)
+		return
+	}
+	flatten(root.Left)
+	l := root.Left
+	for l.Right != nil {
+		l = l.Right
+	}
+
+	flatten(root.Right)
+	l.Right = root.Right
+	root.Right = root.Left
+	root.Left = nil
+}
