@@ -59,3 +59,38 @@ func flatten(root *TreeNode) {
 	root.Right = root.Left
 	root.Left = nil
 }
+
+type Node struct {
+	Val   int
+	Left  *Node
+	Right *Node
+	Next  *Node
+}
+
+// https://leetcode.cn/problems/populating-next-right-pointers-in-each-node/
+func connect(root *Node) *Node {
+	if root == nil {
+		return root
+	}
+	queue := make([]*Node, 0)
+	queue = append(queue, root)
+	for len(queue) > 0 {
+		length := len(queue)
+		var pre *Node
+		for i := 0; i < length; i++ {
+			cur := queue[0]
+			queue = queue[1:]
+			if pre != nil {
+				pre.Next = cur
+			}
+			pre = cur
+			if cur.Left != nil {
+				queue = append(queue, cur.Left)
+			}
+			if cur.Right != nil {
+				queue = append(queue, cur.Right)
+			}
+		}
+	}
+	return root
+}

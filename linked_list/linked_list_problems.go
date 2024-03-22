@@ -240,6 +240,23 @@ func IsPalindrome(head *ListNode) bool {
 	return true
 }
 
+var p *ListNode
+
+func isPalindromeRecursive(head *ListNode) bool {
+	p = head
+	return traverse(head)
+}
+
+func traverse(l *ListNode) bool {
+	if l == nil {
+		return true
+	}
+	res := traverse(l.Next)
+	curRes := l.Val == p.Val
+	p = p.Next
+	return res && curRes
+}
+
 // DeleteDuplicates https://leetcode.cn/problems/remove-duplicates-from-sorted-list/
 func DeleteDuplicates(head *ListNode) *ListNode {
 	slow, fast := head, head
