@@ -106,5 +106,20 @@ func invertTree(root *TreeNode) *TreeNode {
 }
 
 func buildTree(preorder []int, inorder []int) *TreeNode {
+	indexMap := make(map[int]int, len(inorder))
+	for v, i := range inorder {
+		indexMap[v] = i
+	}
+	return buildTreeRecursive(preorder, 0, len(preorder), inorder, 0, len(inorder), indexMap)
+}
 
+func buildTreeRecursive(preorder []int, a int, b int, inorder []int, c int, d int, indexMap map[int]int) *TreeNode {
+	
+	root := preorder[a]
+	rootIndex := indexMap[root]
+	left := buildTreeRecursive(preorder, a+1, a+1+rootIndex-c, inorder, c, rootIndex, indexMap)
+	//left := buildTreeRecursive(preorder[1:1+rootIndex], inorder[0:rootIndex], indexMap)
+	right := buildTreeRecursive(preorder, a+2+rootIndex-c, b, inorder, rootIndex+1, d, indexMap)
+	//right := buildTreeRecursive(preorder[rootIndex+1:], inorder[rootIndex+1:], indexMap)
+	return &TreeNode{Val: root, Left: left, Right: right}
 }

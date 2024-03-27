@@ -41,3 +41,10 @@ func TestConnect(t *testing.T) {
 	}
 	connect(root)
 }
+
+func TestBuildTree(t *testing.T) {
+	preOrder := []int{3, 9, 20, 15, 7}
+	inOrder := []int{9, 3, 15, 20, 7}
+	tree := buildTree(preOrder, inOrder)
+	fmt.Println(tree)
+}

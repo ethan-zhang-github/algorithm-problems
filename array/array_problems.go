@@ -2,6 +2,7 @@ package array
 
 import (
 	"algorithm-problems/array/num_array"
+	"sort"
 )
 
 // TwoSum https://leetcode.cn/problems/two-sum-ii-input-array-is-sorted/
@@ -177,4 +178,71 @@ func searchRecursive(nums []int, target int, left int, right int) int {
 	} else {
 		return searchRecursive(nums, target, left, mid-1)
 	}
+}
+
+// https://leetcode.cn/problems/two-sum/
+func twoSum(nums []int, target int) []int {
+	for i := 0; i < len(nums)-1; i++ {
+		for j := i + 1; j < len(nums); j++ {
+			if nums[i]+nums[j] == target {
+				return []int{i, j}
+			}
+		}
+	}
+	return []int{}
+}
+
+// https://leetcode.cn/problems/3sum/description/
+func threeSum(nums []int) [][]int {
+	sort.Ints(nums)
+	return nSum(nums, 3, 0, 0)
+}
+
+// https://leetcode.cn/problems/4sum/
+func fourSum(nums []int, target int) [][]int {
+	sort.Ints(nums)
+	return nSum(nums, 4, 0, target)
+}
+
+func nSum(nums []int, n int, start int, target int) [][]int {
+	size := len(nums)
+	res := make([][]int, 0)
+	if n < 2 || n > size {
+		return res
+	}
+	if n == 2 {
+		l, r := start, size-1
+		for l < r {
+			sum := nums[l] + nums[r]
+			lv, rv := nums[l], nums[r]
+			if sum > target {
+				for l < r && nums[r] == rv {
+					r--
+				}
+			} else if sum < target {
+				for l < r && nums[l] == lv {
+					l++
+				}
+			} else {
+				res = append(res, []int{lv, rv})
+				for l < r && nums[r] == rv {
+					r--
+				}
+				for l < r && nums[l] == lv {
+					l++
+				}
+			}
+		}
+		return res
+	}
+	for i := start; i < size; i++ {
+		sub := nSum(nums, n-1, i+1, target-nums[i])
+		for _, v := range sub {
+			res = append(res, append(v, nums[i]))
+		}
+		for i < size-1 && nums[i+1] == nums[i] {
+			i++
+		}
+	}
+	return res
 }

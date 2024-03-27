@@ -31,3 +31,9 @@ func TestSearchRange(t *testing.T) {
 	//fmt.Println(SearchRange([]int{5, 7, 7, 8, 8, 10}, 6))
 	fmt.Println(SearchRange([]int{2, 2}, 3))
 }
+
+func TestThreeSum(t *testing.T) {
+	fmt.Println(threeSum([]int{-1, 0, 1, 2, -1, -4}))
+	fmt.Println(threeSum([]int{0, 1, 1}))
+	fmt.Println(threeSum([]int{0, 0, 0}))
+}
